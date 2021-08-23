@@ -18,7 +18,8 @@ namespace aspapp.Controllers
                 new Customer {Name = "Jamie"},
                 new Customer {Name = "Travolta"},
                 new Customer {Name = "Scott"},
-                new Customer {Name = "Travis"}
+                new Customer {Name = "Travis"},
+                new Customer {Name = "Trevor"}
             };
 
             var viewModel = new RandomMovieViewModel
