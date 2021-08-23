@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using aspapp.Models;
+using aspapp.ViewModels;
 
 namespace aspapp.Controllers
 {
@@ -10,7 +12,22 @@ namespace aspapp.Controllers
         public ActionResult Random()
         {
             var movie = new Movie() { Name = "Shrek!" };
-            return View(movie);
+            var customers = new List<Customer>
+            {
+                new Customer {Name = "John"},
+                new Customer {Name = "Jamie"},
+                new Customer {Name = "Travolta"},
+                new Customer {Name = "Scott"},
+                new Customer {Name = "Travis"}
+            };
+
+            var viewModel = new RandomMovieViewModel
+            {
+                Movie = movie,
+                Customers = customers
+            };
+            
+            return View(viewModel);
             // return new ViewResult();
             // return Content("Hello world!!!");
             // return HttpNotFound();
