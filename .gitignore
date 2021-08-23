@@ -1,3 +1,4 @@
 aspapp/obj/*
+aspapp/bin/*
 .vs/*
 .idea/*
