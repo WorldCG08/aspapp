@@ -24,9 +24,14 @@ namespace aspapp.Controllers
         [Route("customers/details/{id}")]
         public ActionResult CustomerDetails(int id)
         {
-            
-            return View(Customers[id - 1]);
+            if (Customers.Count >= id)
+            {
+                return View(Customers[id - 1]);
+            }
+            else
+            {
+                return new HttpNotFoundResult();
+            }
         }
-
     }
 }

@@ -8,6 +8,19 @@ namespace aspapp.Controllers
 {
     public class MoviesController : Controller
     {
+        private List<Movie> Movies = new List<Movie>
+        {
+            new Movie {Id = 1, Name = "Shrek!"},
+            new Movie {Id = 1, Name = "Matrix"},
+            new Movie {Id = 1, Name = "Lord of the rings"},
+        };
+        
+        [Route("movies")]
+        public ActionResult Index()
+        {
+            return View(Movies);
+        }
+        
         // GET: Movies/Random
         public ActionResult Random()
         {
@@ -41,17 +54,17 @@ namespace aspapp.Controllers
             return Content("id=" + id);
         }
 
-        // Movies
-        public ActionResult Index(int? pageIndex, string sortBy)
-        {
-            if (!pageIndex.HasValue)
-                pageIndex = 1;
-
-            if (String.IsNullOrWhiteSpace(sortBy))
-                sortBy = "name";
-
-            return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
-        }
+        // // Movies
+        // public ActionResult Index(int? pageIndex, string sortBy)
+        // {
+        //     if (!pageIndex.HasValue)
+        //         pageIndex = 1;
+        //
+        //     if (String.IsNullOrWhiteSpace(sortBy))
+        //         sortBy = "name";
+        //
+        //     return Content(String.Format("pageIndex={0}&sortBy={1}", pageIndex, sortBy));
+        // }
 
         [Route("movies/released/{year:regex(\\d{4})}/{month:regex(\\d{2}):range(1, 12)}")]
         public ActionResult ByReleaseDate(int year, byte month)
