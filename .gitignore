@@ -1,4 +1,5 @@
 aspapp/obj/*
 aspapp/bin/*
+packages/*
 .vs/*
 .idea/*
