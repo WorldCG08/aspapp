@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using aspapp.Models;
 
@@ -6,27 +7,26 @@ namespace aspapp.Controllers
 {
     public class CustomersController : Controller
     {
-        List<Customer> Customers = new List<Customer>
+        private AspAppContext _context;
+        public CustomersController()
         {
-            new Customer {Id = 1, Name = "John Smith"},
-            new Customer {Id = 2, Name = "John Travolta"},
-            new Customer {Id = 3, Name = "Kael Freeman"},
-            new Customer {Id = 4, Name = "Test user"}
-        };
+            _context = new AspAppContext();
+        }
 
         [Route("customers")]
         public ActionResult Index()
         {
-            
-            return View(Customers);
+            var customers = _context.Customers.ToList();
+            return View(customers);
         }
         
         [Route("customers/details/{id}")]
         public ActionResult CustomerDetails(int id)
         {
-            if (Customers.Count >= id)
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (customer != null)
             {
-                return View(Customers[id - 1]);
+                return View(customer);
             }
             else
             {
