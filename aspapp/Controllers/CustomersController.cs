@@ -28,5 +28,11 @@ namespace aspapp.Controllers
                 return View(customer);
             return new HttpNotFoundResult();
         }
+        
+        [Route("customers/add")]
+        public ActionResult New()
+        {
+            return View();
+        }
     }
 }
