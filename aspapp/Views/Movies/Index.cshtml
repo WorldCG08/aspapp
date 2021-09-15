@@ -1,20 +1,26 @@
 @model System.Collections.Generic.List<aspapp.Models.Movie>
 
-@{
-    ViewBag.Title = "title";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
 @if (Model.Count == 0)
 {
-    <text>there are no movies right now.</text>
+    <text>There are no movies right now.</text>
 }
 else
 {
-    <ul>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Genre</th>
+        </tr>
+        </thead>
+        <tbody>
         @foreach (var movie in Model)
         {
-            <li>@movie.Name</li>
+            <tr>
+                <td><a href="/movies/details/@movie.Id">@movie.Name</a></td>
+                <td>@movie.Name</td>
+            </tr>
         }
-    </ul>
+        </tbody>
+    </table>
 }

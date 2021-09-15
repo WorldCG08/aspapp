@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using aspapp.Models;
 using aspapp.ViewModels;
@@ -8,17 +9,19 @@ namespace aspapp.Controllers
 {
     public class MoviesController : Controller
     {
-        private List<Movie> Movies = new List<Movie>
+        private AspAppContext _context;
+
+        public MoviesController()
         {
-            new Movie {Id = 1, Name = "Shrek!"},
-            new Movie {Id = 1, Name = "Matrix"},
-            new Movie {Id = 1, Name = "Lord of the rings"},
-        };
+            _context = new AspAppContext();
+        }
         
         [Route("movies")]
         public ActionResult Index()
         {
-            return View(Movies);
+            var movies = _context.Movies.ToList();
+            
+            return View(movies);
         }
         
         // GET: Movies/Random
@@ -70,6 +73,20 @@ namespace aspapp.Controllers
         public ActionResult ByReleaseDate(int year, byte month)
         {
             return Content(month + "/" + year);
+        }
+        
+        [Route("movies/details/{id}")]
+        public ActionResult MovieDetails(int id)
+        {
+            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
+            if (movie != null)
+            {
+                return View(movie);
+            }
+            else
+            {
+                return new HttpNotFoundResult();
+            }
         }
     }
 }
