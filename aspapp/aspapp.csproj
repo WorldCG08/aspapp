@@ -156,6 +156,22 @@
     <Compile Include="Migrations\202109140723243_CustomerNameIsRequired.designer.cs">
       <DependentUpon>202109140723243_CustomerNameIsRequired.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109140942501_AddedNameToMembershipType.cs" />
+    <Compile Include="Migrations\202109140942501_AddedNameToMembershipType.designer.cs">
+      <DependentUpon>202109140942501_AddedNameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109140945157_PopulatingNamesForMembershipypes.cs" />
+    <Compile Include="Migrations\202109140945157_PopulatingNamesForMembershipypes.designer.cs">
+      <DependentUpon>202109140945157_PopulatingNamesForMembershipypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109141716016_AddBirthdateToCustomer.cs" />
+    <Compile Include="Migrations\202109141716016_AddBirthdateToCustomer.designer.cs">
+      <DependentUpon>202109141716016_AddBirthdateToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109141722050_PopulatingBirthdayForCustomers.cs" />
+    <Compile Include="Migrations\202109141722050_PopulatingBirthdayForCustomers.designer.cs">
+      <DependentUpon>202109141722050_PopulatingBirthdayForCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MembershipType.cs" />
@@ -236,6 +252,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109140723243_CustomerNameIsRequired.resx">
       <DependentUpon>202109140723243_CustomerNameIsRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109140942501_AddedNameToMembershipType.resx">
+      <DependentUpon>202109140942501_AddedNameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109140945157_PopulatingNamesForMembershipypes.resx">
+      <DependentUpon>202109140945157_PopulatingNamesForMembershipypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109141716016_AddBirthdateToCustomer.resx">
+      <DependentUpon>202109141716016_AddBirthdateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109141722050_PopulatingBirthdayForCustomers.resx">
+      <DependentUpon>202109141722050_PopulatingBirthdayForCustomers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
