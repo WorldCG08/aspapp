@@ -1,4 +1,4 @@
-@model System.Collections.Generic.List<aspapp.Models.Customer>
+@model List<aspapp.Models.Customer>
 
 @{
     ViewBag.Title = "title";
@@ -23,7 +23,9 @@ else
         @foreach (var customer in Model)
         {
             <tr>
-                <td><a href="/customers/details/@customer.Id">@customer.Name</a></td>
+                <td>
+                    <a href="/customers/details/@customer.Id">@customer.Name</a>
+                </td>
                 <td>@customer.MembershipType.Name</td>
             </tr>
         }

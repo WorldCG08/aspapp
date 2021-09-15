@@ -7,13 +7,13 @@ namespace aspapp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class PopulatingNamesForMembershipypes : IMigrationMetadata
+    public sealed partial class PopulatingModels : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulatingNamesForMembershipypes));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PopulatingModels));
         
         string IMigrationMetadata.Id
         {
-            get { return "202109140945157_PopulatingNamesForMembershipypes"; }
+            get { return "202109151401468_PopulatingModels"; }
         }
         
         string IMigrationMetadata.Source

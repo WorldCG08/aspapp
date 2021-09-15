@@ -57,6 +57,15 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.115.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.EF6, Version=1.0.115.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.EF6.1.0.115.0\lib\net46\System.Data.SQLite.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.SQLite.Linq, Version=1.0.115.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Linq.1.0.115.0\lib\net46\System.Data.SQLite.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -129,51 +138,24 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="AspAppContext.cs" />
+    <Compile Include="AppContext.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109131509566_InitialModel.cs" />
-    <Compile Include="Migrations\202109131509566_InitialModel.Designer.cs">
-      <DependentUpon>202109131509566_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\202109151352518_InitialMigration.cs" />
+    <Compile Include="Migrations\202109151352518_InitialMigration.designer.cs">
+      <DependentUpon>202109151352518_InitialMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202109131632536_AddedIsSubscribedToNewsletterToCustomer.cs" />
-    <Compile Include="Migrations\202109131632536_AddedIsSubscribedToNewsletterToCustomer.designer.cs">
-      <DependentUpon>202109131632536_AddedIsSubscribedToNewsletterToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109131639576_AddedMembershipType.cs" />
-    <Compile Include="Migrations\202109131639576_AddedMembershipType.designer.cs">
-      <DependentUpon>202109131639576_AddedMembershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109131643101_PopulateMembershipTypes.cs" />
-    <Compile Include="Migrations\202109131643101_PopulateMembershipTypes.designer.cs">
-      <DependentUpon>202109131643101_PopulateMembershipTypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109140723243_CustomerNameIsRequired.cs" />
-    <Compile Include="Migrations\202109140723243_CustomerNameIsRequired.designer.cs">
-      <DependentUpon>202109140723243_CustomerNameIsRequired.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109140942501_AddedNameToMembershipType.cs" />
-    <Compile Include="Migrations\202109140942501_AddedNameToMembershipType.designer.cs">
-      <DependentUpon>202109140942501_AddedNameToMembershipType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109140945157_PopulatingNamesForMembershipypes.cs" />
-    <Compile Include="Migrations\202109140945157_PopulatingNamesForMembershipypes.designer.cs">
-      <DependentUpon>202109140945157_PopulatingNamesForMembershipypes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109141716016_AddBirthdateToCustomer.cs" />
-    <Compile Include="Migrations\202109141716016_AddBirthdateToCustomer.designer.cs">
-      <DependentUpon>202109141716016_AddBirthdateToCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202109141722050_PopulatingBirthdayForCustomers.cs" />
-    <Compile Include="Migrations\202109141722050_PopulatingBirthdayForCustomers.designer.cs">
-      <DependentUpon>202109141722050_PopulatingBirthdayForCustomers.cs</DependentUpon>
+    <Compile Include="Migrations\202109151401468_PopulatingModels.cs" />
+    <Compile Include="Migrations\202109151401468_PopulatingModels.designer.cs">
+      <DependentUpon>202109151401468_PopulatingModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,32 +221,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202109131509566_InitialModel.resx">
-      <DependentUpon>202109131509566_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109151352518_InitialMigration.resx">
+      <DependentUpon>202109151352518_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131632536_AddedIsSubscribedToNewsletterToCustomer.resx">
-      <DependentUpon>202109131632536_AddedIsSubscribedToNewsletterToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131639576_AddedMembershipType.resx">
-      <DependentUpon>202109131639576_AddedMembershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109131643101_PopulateMembershipTypes.resx">
-      <DependentUpon>202109131643101_PopulateMembershipTypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109140723243_CustomerNameIsRequired.resx">
-      <DependentUpon>202109140723243_CustomerNameIsRequired.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109140942501_AddedNameToMembershipType.resx">
-      <DependentUpon>202109140942501_AddedNameToMembershipType.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109140945157_PopulatingNamesForMembershipypes.resx">
-      <DependentUpon>202109140945157_PopulatingNamesForMembershipypes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109141716016_AddBirthdateToCustomer.resx">
-      <DependentUpon>202109141716016_AddBirthdateToCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202109141722050_PopulatingBirthdayForCustomers.resx">
-      <DependentUpon>202109141722050_PopulatingBirthdayForCustomers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202109151401468_PopulatingModels.resx">
+      <DependentUpon>202109151401468_PopulatingModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -302,8 +263,10 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

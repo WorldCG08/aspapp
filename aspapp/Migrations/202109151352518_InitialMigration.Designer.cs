@@ -7,13 +7,13 @@ namespace aspapp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class CustomerNameIsRequired : IMigrationMetadata
+    public sealed partial class InitialMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CustomerNameIsRequired));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202109140723243_CustomerNameIsRequired"; }
+            get { return "202109151352518_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source
