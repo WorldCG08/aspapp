@@ -5,3 +5,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2>Movie: @Model.Name</h2>
+<h2>Release Date: @Model.ReleaseDate</h2>
+<h2>Date added: @Model.DateAdded</h2>
+<h2>Genres: @String.Join(", ", Model.Genres.Select(g => g.Name).ToArray())</h2>

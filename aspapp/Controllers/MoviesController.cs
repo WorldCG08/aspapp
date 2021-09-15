@@ -78,7 +78,7 @@ namespace aspapp.Controllers
         [Route("movies/details/{id}")]
         public ActionResult MovieDetails(int id)
         {
-            var movie = _context.Movies.SingleOrDefault(c => c.Id == id);
+            var movie = _context.Movies.Include(m => m.Genres).SingleOrDefault(c => c.Id == id);
             if (movie != null)
                 return View(movie);
             return new HttpNotFoundResult();
