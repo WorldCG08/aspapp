@@ -1,6 +1,8 @@
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
+using aspapp.Models;
+using aspapp.ViewModels;
 
 namespace aspapp.Controllers
 {
@@ -32,7 +34,20 @@ namespace aspapp.Controllers
         [Route("customers/add")]
         public ActionResult New()
         {
-            return View();
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var viewModel = new NewCustomerViewModel
+            {
+                MembershipTypes = membershipTypes
+            };
+            return View(viewModel);
+        }
+        
+        [HttpPost]
+        public ActionResult CreateCustomer(Customer customer)
+        {
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Customers");
         }
     }
 }

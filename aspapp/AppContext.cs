@@ -1,4 +1,5 @@
 using System.Data.Entity;
+using System.Security.AccessControl;
 using aspapp.Models;
 
 namespace aspapp
@@ -8,6 +9,7 @@ namespace aspapp
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Genre> Genres { get; set; }
+        public DbSet<MembershipType> MembershipTypes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
