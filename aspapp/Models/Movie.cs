@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace aspapp.Models
 {
@@ -7,8 +8,11 @@ namespace aspapp.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        [Display(Name = "Release date")]
         public DateTime ReleaseDate { get; set; }
+        [Display(Name = "Date added")]
         public DateTime DateAdded { get; set; }
-        public List<Genre> Genres { get; set; }
+        public virtual List<Genre> Genres { get; set; }
+        
     }
 }

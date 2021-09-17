@@ -35,10 +35,9 @@ namespace aspapp.Controllers
         [Route("customers/add")]
         public ActionResult CustomerForm()
         {
-            var membershipTypes = _context.MembershipTypes.ToList();
             var viewModel = new CustomerFormViewModel
             {
-                MembershipTypes = membershipTypes
+                MembershipTypes = _context.MembershipTypes.ToList()
             };
             return View("CustomerForm", viewModel);
         }

@@ -11,6 +11,7 @@ else
         <tr>
             <th>Movie</th>
             <th>Genre</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -18,9 +19,12 @@ else
         {
             <tr>
                 <td>
-                    <a href="/movies/details/@movie.Id">@movie.Name</a>
+                    @Html.ActionLink(movie.Name, "MovieDetails", "Movies", new {id = movie.Id}, null)
                 </td>
                 <td>@String.Join(", ", movie.Genres.Select(g => g.Name).ToArray())</td>
+                <td>
+                    @Html.ActionLink(movie.Name, "Edit", "Movies", new {id = movie.Id}, null)
+                </td>
             </tr>
         }
         </tbody>
