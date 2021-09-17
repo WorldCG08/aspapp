@@ -56,7 +56,8 @@ namespace aspapp.Controllers
             }
             else
             {
-                var movieInDb = _context.Movies.Single(c => c.Id == movieForm.Movie.Id);
+                var movieInDb = _context.Movies.Include(m => m.Genres).Single(c => c.Id == movieForm.Movie.Id);
+                movieInDb.Genres = null;
                 var selectedGenres = _context.Genres.Where(g => movieForm.SelectedGenres.Contains(g.Id)).ToList();
                 movieInDb.Name = movieForm.Movie.Name;
                 movieInDb.Genres = selectedGenres;
