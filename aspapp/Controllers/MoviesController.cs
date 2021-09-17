@@ -28,9 +28,17 @@ namespace aspapp.Controllers
         [Route("movies/add")]
         public ActionResult Add()
         {
+            var allGenres = _context.Genres.ToList();
+            var genres = new List<Genre>();
+            
+            foreach (var genre in allGenres)
+            {
+                genres.Add(new Genre { Id = genre.Id, Name = genre.Name });
+            }
+            
             var viewModel = new MovieFormViewModel
             {
-                Genres = new MultiSelectList(null, "ID", "Name", null)
+                Genres = new MultiSelectList(genres, "ID", "Name", null)
             };
             return View("MovieForm", viewModel);
         }
@@ -38,8 +46,14 @@ namespace aspapp.Controllers
         [HttpPost]
         public ActionResult Save(MovieFormViewModel movieForm)
         {
+            movieForm.Movie.DateAdded = DateTime.Now;
+
             if (movieForm.Movie.Id == 0)
+            {
+                var genres = _context.Genres.Where(g => movieForm.SelectedGenres.Contains(g.Id)).ToList();
+                movieForm.Movie.Genres = genres;
                 _context.Movies.Add(movieForm.Movie);
+            }
             else
             {
                 var movieInDb = _context.Movies.Single(c => c.Id == movieForm.Movie.Id);
@@ -47,7 +61,7 @@ namespace aspapp.Controllers
                 movieInDb.Name = movieForm.Movie.Name;
                 movieInDb.Genres = selectedGenres;
                 movieInDb.ReleaseDate = movieForm.Movie.ReleaseDate;
-                movieInDb.DateAdded = DateTime.Now;
+                movieInDb.DateAdded = movieForm.Movie.DateAdded;
             }
 
             _context.SaveChanges();
@@ -64,11 +78,11 @@ namespace aspapp.Controllers
             
             // var items = new List<Genre>();
             // These items would be set from your db
-            var items = new List<Genre>();
+            var genres = new List<Genre>();
 
             foreach (var genre in allGenres)
             {
-                items.Add(new Genre { Id = genre.Id, Name = genre.Name });
+                genres.Add(new Genre { Id = genre.Id, Name = genre.Name });
             }
             
             var selectedItems = new List<Genre>();
@@ -84,7 +98,7 @@ namespace aspapp.Controllers
             var viewModel = new MovieFormViewModel()
             {
                 Movie = movie,
-                Genres = new MultiSelectList(items, "ID", "Name", selectedGenresArray),
+                Genres = new MultiSelectList(genres, "ID", "Name", selectedGenresArray),
                 SelectedGenres = selectedGenresArray
             };
             return View("MovieForm", viewModel);
