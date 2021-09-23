@@ -1,0 +1,9 @@
+// Create Role
+
+var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+var rolemanager = new RoleManager<IdentityRole>(roleStore);
+await rolemanager.CreateAsync(new IdentityRole("CanManageMovies"));
+
+
+// Add user to role
+await UserManager.AddToRoleAsync(user.Id, "CanManageMovies");
